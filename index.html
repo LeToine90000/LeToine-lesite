@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Toine — Freelance marketing & communication</title>
+  <meta name="description" content="Le Toine accompagne les marques avec une approche mêlant stratégie, création et performance.">
+  <style>
+    :root{
+      --orange:#FF6A00;
+      --orange-soft:#FFB066;
+      --black:#111111;
+      --text:#262626;
+      --muted:#6A6A6A;
+      --line:#EAEAEA;
+      --bg:#FFFFFF;
+      --panel:#F6F6F4;
+      --max:1200px;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0}
+    .nav-links{display:flex;gap:28px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.04em;transition:.25s ease;border:1px solid var(--orange)}
+    .btn-primary{background:var(--orange);color:#fff}
+    .btn-primary:hover{background:#e35d00;border-color:#e35d00}
+    .btn-secondary{background:#fff;color:var(--black)}
+    .btn-secondary:hover{background:#fff4ec}
+    .hero{padding:72px 0 56px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+    .eyebrow{display:inline-flex;gap:12px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    .eyebrow::before{content:"";width:46px;height:8px;background:var(--orange);display:inline-block}
+    h1{font-size:clamp(48px,8vw,104px);line-height:.95;margin:18px 0 24px;color:var(--black);letter-spacing:-.04em}
+    h1 .accent{color:var(--orange)}
+    .lead{font-size:20px;color:#474747;max-width:640px;margin-bottom:34px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+    .hero-note{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:24px;border-top:1px solid var(--line)}
+    .hero-note strong{display:block;font-size:28px;color:var(--black);line-height:1}
+    .hero-note span{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:6px}
+    .portrait-card{position:relative;background:linear-gradient(135deg,#fff 0%,#f4f4f4 100%);border:1px solid var(--line);border-radius:36px;overflow:hidden;min-height:620px}
+    .portrait-card::before,.portrait-card::after{content:"";position:absolute;right:28px;height:22px;border-radius:2px;background:var(--orange)}
+    .portrait-card::before{top:94px;width:180px}
+    .portrait-card::after{top:150px;width:118px;background:#d7d7d7}
+    .portrait-card .shape{position:absolute;left:40px;bottom:46px;width:90px;height:14px;background:var(--orange)}
+    .portrait{position:absolute;bottom:0;right:0;width:min(92%,520px);filter:grayscale(100%)}
+    .section{padding:88px 0}
+    .section.dark{background:#0D0D0D;color:#fff}
+    .section-header{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}
+    .section-title{font-size:clamp(32px,4.5vw,54px);line-height:1;margin:0;letter-spacing:-.04em;color:inherit;text-transform:uppercase}
+    .section-text{max-width:640px;color:var(--muted);font-size:18px}
+    .trustbar{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;align-items:center}
+    .logo-item{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;min-height:110px;display:flex;align-items:center;justify-content:center}
+    .logo-item img{max-height:54px;max-width:100%;object-fit:contain;filter:grayscale(100%)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+    .about-card{background:var(--panel);border-radius:30px;padding:34px;border:1px solid var(--line)}
+    .about-card h3{margin:0 0 12px;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:-.03em;color:var(--black)}
+    .about-card p{margin:0 0 16px;color:#4f4f4f;font-size:17px}
+    .quote{font-size:26px;line-height:1.15;letter-spacing:-.03em;color:var(--black);margin:0 0 22px}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .service{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;transition:.25s ease}
+    .service:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.06)}
+    .service .num{font-size:12px;color:var(--orange);font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+    .service h3{font-size:30px;line-height:1;margin:0 0 14px;text-transform:uppercase;letter-spacing:-.03em;color:var(--black)}
+    .service ul{padding-left:18px;margin:0;color:#4b4b4b}
+    .service li{margin:0 0 10px}
+    .contact-cta{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;background:#111;border-radius:34px;padding:42px;border:1px solid #242424}
+    .contact-cta .section-title{color:#fff}
+    .contact-card{background:#fff;border-radius:24px;padding:28px;color:var(--black)}
+    .contact-line{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+    .contact-line:last-child{border-bottom:none;padding-bottom:0}
+    footer{padding:34px 0 48px;border-top:1px solid var(--line)}
+    .footer-grid{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer-small{font-size:13px;color:var(--muted)}
+    @media (max-width: 1050px){
+      .hero-grid,.about-grid,.contact-cta{grid-template-columns:1fr}
+      .trustbar{grid-template-columns:repeat(3,1fr)}
+      .services{grid-template-columns:1fr}
+      .portrait-card{min-height:500px}
+    }
+    @media (max-width: 760px){
+      .nav{flex-wrap:wrap}
+      .nav-links{display:none}
+      .hero{padding-top:34px}
+      .lead{font-size:18px}
+      .hero-note{grid-template-columns:1fr}
+      .trustbar{grid-template-columns:repeat(2,1fr)}
+      .section{padding:68px 0}
+      .logo-item{min-height:94px}
+      .section-header{align-items:start;flex-direction:column}
+      .portrait-card{min-height:420px}
+      .btn{width:100%}
+      .hero-actions{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a href="#top" aria-label="Accueil Le Toine"><img src="assets/logo-letoine.svg" alt="Logo Le Toine" style="height:48px;width:auto"></a>
+      <nav class="nav-links">
+        <a href="#apropos">À propos</a>
+        <a href="#expertises">Expertises</a>
+        <a href="#clients">Clients</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-secondary" href="mailto:antoine@letoine.com">Parlons de votre projet</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Freelance marketing & communication</span>
+          <h1>Stratégie.<br>Création.<br><span class="accent">Performance.</span></h1>
+          <p class="lead">Le Toine accompagne les marques qui veulent structurer leur communication, clarifier leur image et faire avancer leurs actions marketing avec plus d’impact.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#expertises">Découvrir mes expertises</a>
+            <a class="btn btn-secondary" href="#clients">Voir les clients</a>
+          </div>
+          <div class="hero-note">
+            <div><strong>15 ans</strong><span>d’expérience mise au service des marques</span></div>
+            <div><strong>3 piliers</strong><span>stratégie, création, digital</span></div>
+            <div><strong>Belfort</strong><span>interventions locales et à distance</span></div>
+          </div>
+        </div>
+        <div class="portrait-card">
+          <span class="shape"></span>
+          <img class="portrait" src="assets/antoine.webp" alt="Portrait d'Antoine, fondateur de Le Toine">
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos" class="section">
+      <div class="wrap about-grid">
+        <div class="about-card">
+          <p class="quote">« Je m’appelle Antoine. Ma mamie m’appelait “Le Toine”. »</p>
+          <p>Originaire du Pays de Montbéliard, Antoine a vécu entre Paris, Nottingham et Melbourne avant de revenir à Belfort et de lancer son activité en freelance en communication et marketing en 2020.</p>
+          <p>Sa trajectoire mêle création, conception-rédaction, édition, gestion de projet et pilotage marketing, avec un fil rouge : faire émerger des messages clairs et des dispositifs utiles.</p>
+        </div>
+        <div class="about-card">
+          <h3>Un parcours transverse</h3>
+          <p>Issu d’une formation en marketing international, Antoine a travaillé pour des acteurs de l’entertainment comme The Walt Disney Company, 20th Century Fox, Columbia Pictures, Pathé, Stage Entertainment, Lagardère Entertainment ou Dargaud.</p>
+          <p>Il a ensuite renforcé ses compétences dans des secteurs variés comme l’énergie, le conseil, l’associatif, puis l’automobile où il a occupé un poste de responsable marketing au sein d’un groupe de concessions en Alsace.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertises" class="section" style="background:#faf9f7; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="section-title" style="color:var(--black)">Expertises</h2>
+          <p class="section-text">Le site actuel met en avant trois grands savoir-faire : branding, conseil et digital. Cette nouvelle version les réorganise pour mieux exprimer la valeur apportée et faciliter la prise de contact.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <div class="num">01 — Branding</div>
+            <h3>Construire une image solide</h3>
+            <ul>
+              <li>Identité visuelle, logo, charte graphique et supports de marque</li>
+              <li>Cartes de visite, outils de communication, signalétique, covering et impression</li>
+              <li>Direction artistique cohérente sur print et digital</li>
+            </ul>
+          </article>
+          <article class="service">
+            <div class="num">02 — Conseil</div>
+            <h3>Donner une direction claire</h3>
+            <ul>
+              <li>Communication externe ou interne, offline et online</li>
+              <li>Plan de communication, stratégie digitale et publicité social media</li>
+              <li>Étude de marché, lancement de produit et approche marketing 360</li>
+            </ul>
+          </article>
+          <article class="service">
+            <div class="num">03 — Digital</div>
+            <h3>Faire vivre et performer</h3>
+            <ul>
+              <li>Community management et pilotage éditorial</li>
+              <li>Gestion de campagnes de publicité sur les réseaux sociaux</li>
+              <li>E-réputation, optimisation continue et vision orientée résultats</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="clients" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="section-title" style="color:var(--black)">Ils m’ont fait confiance</h2>
+          <p class="section-text">La page actuelle de Le Toine affiche notamment Groupe Bader, Casa da Sylvana, Dada Turf, Dr. Martens, Tabac & Co, Cabexo et Thierry Rodeschini parmi les clients visibles.</p>
+        </div>
+        <div class="trustbar">
+          <div class="logo-item"><img src="assets/client-bader.webp" alt="Logo Groupe Bader"></div>
+          <div class="logo-item"><img src="assets/client-casa.webp" alt="Logo Casa da Sylvana"></div>
+          <div class="logo-item"><img src="assets/client-dada.webp" alt="Logo Dada Turf"></div>
+          <div class="logo-item"><img src="assets/client-drmartens.webp" alt="Logo Dr Martens"></div>
+          <div class="logo-item"><img src="assets/client-tabacco.webp" alt="Logo Tabac & Co"></div>
+          <div class="logo-item"><img src="assets/client-cabexo.webp" alt="Logo Cabexo"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="wrap contact-cta" id="contact">
+        <div>
+          <span class="eyebrow" style="color:#b7b7b7">Contact</span>
+          <h2 class="section-title">Prêt à faire évoluer votre communication ?</h2>
+          <p class="section-text" style="color:#d0d0d0">Discutons de vos enjeux, de votre image de marque et des actions à mettre en place pour donner plus de force à votre communication.</p>
+          <div class="hero-actions" style="margin-bottom:0">
+            <a class="btn btn-primary" href="mailto:antoine@letoine.com">Écrire un email</a>
+            <a class="btn btn-secondary" href="tel:+33648628571">Appeler Antoine</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-line"><strong>Email</strong><span>antoine@letoine.com</span></div>
+          <div class="contact-line"><strong>Téléphone</strong><span>06 48 62 85 71</span></div>
+          <div class="contact-line"><strong>Adresse</strong><span>7, rue du Colonel Engelhard, 90000 Belfort</span></div>
+          <div class="contact-line"><strong>Zone</strong><span>Belfort, Montbéliard, Alsace et à distance</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <img src="assets/logo-letoine.svg" alt="Logo Le Toine" style="height:44px;width:auto">
+      <div class="footer-small">© Le Toine — Freelance marketing & communication</div>
+    </div>
+  </footer>
+</body>
+</html>
